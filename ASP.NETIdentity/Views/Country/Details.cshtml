@@ -11,11 +11,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ContryId)
+            @Html.DisplayNameFor(model => model.ContryName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ContryId)
+            @Html.DisplayFor(model => model.ContryName)
         </dd>
 
     </dl>
@@ -24,3 +24,14 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.CountryId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+<br />
+<br />
+<div class="row">
+    @foreach (var item in Model.cities)
+    {
+        <p>Name:</p>
+        <div class="row">@item.CityName </div>
+
+
+    }
+</div>

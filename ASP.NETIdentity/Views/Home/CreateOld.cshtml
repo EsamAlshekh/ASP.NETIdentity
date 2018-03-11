@@ -11,7 +11,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>PersonViewmodel</h4>
+        <h4>Person</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -21,24 +21,25 @@
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.CountryId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CountryId, "CountryId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select id="CountryId"  class="form-control" name="CountryId">
+                @*@Html.DropDownList("CountryId", (System.Collections.Generic.List<System.Web.Mvc.SelectListItem>)ViewBag.CountryId, new {  @class = "form-control" })*@
+                @Html.DropDownListFor(p=>p.CountryId, (System.Collections.Generic.List<System.Web.Mvc.SelectListItem>)ViewBag.CountryId, new {id="", @class = "form-control" })
+                @*<select id="CountryId" name="CountryId">
                     @foreach (var item in Model.Countrys)
                      {
-                        <option value="@item.CountryId">@item.ContryName</option>
+            <option value="@item.CountryId">@item.ContryName</option>
                      }
-                </select>
-                @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
+                </select>*@
+                @*@Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CityId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CityId, "CityId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select id="CityId" name="CityId" class="form-control"></select>
+                <select id="St" class="form-control"></select>
                 @Html.ValidationMessageFor(model => model.CityId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -50,26 +51,31 @@
         </div>
     </div>
 }
-    
+
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
 <script>
     $(function () {
         $("#CountryId").change(function () {
-            document.getElementById('CityId').innerHTML = "";
+            document.getElementById('St').innerHTML = "";
             $.get("/Home/GitCityById", { id: $("#CountryId").val() }, function (data) {
                 $.each(data, function (index, row) {
-                    $("#CityId").append("<option value='" + row.CityId + "'>" + row.CityName + "</option>")
+                    $("#St").append("<option value='" + row.CityId + "'>" + row.CityName + "</option>")
                 });
             });
         });
 
         $.get("/Home/GitCityById", { id: $("#CountryId").val() }, function (data) {
             $.each(data, function (index, row) {
-                $("#CityId").append("<option value='" + row.CityId + "'>" + row.CityName + "</option>")
+                $("#St").append("<option value='" + row.CityId + "'>" + row.CityName + "</option>")
             });
         });
 
     });
 </script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

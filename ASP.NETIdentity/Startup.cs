@@ -39,18 +39,18 @@ namespace ASP.NETIdentity
                 role.Name = "Admins";
                 roleManager.Create(role);
             }
-            if (!roleManager.RoleExists("Authors"))
+            if (!roleManager.RoleExists("NormallUser"))
             {
                 role = new IdentityRole();
-                role.Name = "Authors";
+                role.Name = "NormallUser";
                 roleManager.Create(role);
             }
-            if (!roleManager.RoleExists("Readers"))
-            {
-                role = new IdentityRole();
-                role.Name = "Readers";
-                roleManager.Create(role);
-            }
+            //if (!roleManager.RoleExists("Readers"))
+            //{
+            //    role = new IdentityRole();
+            //    role.Name = "Readers";
+            //    roleManager.Create(role);
+            //}
         }
     }
 }

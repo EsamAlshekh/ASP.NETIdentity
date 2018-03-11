@@ -10,7 +10,7 @@ using ASP.NETIdentity.Models;
 
 namespace ASP.NETIdentity.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admins")]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;

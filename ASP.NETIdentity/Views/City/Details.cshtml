@@ -18,9 +18,27 @@
             @Html.DisplayFor(model => model.CityName)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Country.ContryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country.ContryName)
+        </dd>
+
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.CityId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+<div class="row">
+    @foreach (var item in Model.People)
+    {
+        <p>Name:</p>
+        <div class="row">@item.Name </div>
+        <br />
+
+
+    }
+</div>

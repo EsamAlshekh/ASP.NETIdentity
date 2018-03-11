@@ -194,20 +194,21 @@
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\PeopleDBModelContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CityViewModel.cs" />
+    <Compile Include="Models\CountryViewModel.cs" />
     <Compile Include="Models\Demo\City.cs" />
     <Compile Include="Models\Demo\Country.cs" />
     <Compile Include="Models\Demo\PeopleDBModelContext.cs" />
     <Compile Include="Models\Demo\Person.cs" />
+    <Compile Include="Models\Demo\PersonViewmodel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\PersonViewModel.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -270,20 +271,21 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\Details.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
-    <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\Delete.cshtml" />
-    <Content Include="Views\Country\Edit.cshtml" />
     <Content Include="Views\Country\Details.cshtml" />
-    <Content Include="Views\Country\Index.cshtml" />
-    <Content Include="Views\City\Index.cshtml" />
     <Content Include="Views\City\Details.cshtml" />
-    <Content Include="Views\City\Create.cshtml" />
-    <Content Include="Views\City\Edit.cshtml" />
-    <Content Include="Views\City\Delete.cshtml" />
-    <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Country\Delete.cshtml" />
     <Content Include="Views\Country\Create.cshtml" />
+    <Content Include="Views\City\Create.cshtml" />
+    <Content Include="Views\City\Index.cshtml" />
+    <Content Include="Views\City\Edit.cshtml" />
+    <Content Include="Views\City\Delete.cshtml" />
+    <Content Include="Views\Country\Index.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Home\Delete.cshtml" />
+    <Content Include="Views\Home\CreateOld.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
   </ItemGroup>

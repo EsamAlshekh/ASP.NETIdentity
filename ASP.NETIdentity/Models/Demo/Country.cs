@@ -15,6 +15,7 @@ namespace ASP.NETIdentity.Models.Demo
 
         public List<City> cities { get; set; }
 
-        public List<Person> People { get; set; }
+
+        //public List<Person> People { get; set; }
     }
 }

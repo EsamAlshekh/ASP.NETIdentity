@@ -17,6 +17,7 @@ namespace ASP.NETIdentity.Models.Demo
             public DbSet<Person> People { get; set; }
             public DbSet<City> Cities { get; set; }
             public DbSet<Country> Countries { get; set; }
-        
+
+        public System.Data.Entity.DbSet<ASP.NETIdentity.Models.Demo.PersonViewmodel> PersonViewmodels { get; set; }
     }
 }

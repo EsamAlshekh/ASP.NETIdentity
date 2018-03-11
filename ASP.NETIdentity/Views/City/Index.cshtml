@@ -14,7 +14,7 @@
         <th>
             @Html.DisplayNameFor(model => model.CityName)
         </th>
-        <th></th>
+        <th>Country</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -23,11 +23,16 @@
             @Html.DisplayFor(modelItem => item.CityName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CityId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CityId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CityId })
+            @Html.DisplayFor(modelItem => item.Country.ContryName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.CityId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CityId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CityId })
         </td>
     </tr>
 }
 
 </table>
+
+

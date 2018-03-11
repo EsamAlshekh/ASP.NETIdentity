@@ -8,19 +8,20 @@ using System.Web.Mvc;
 
 namespace ASP.NETIdentity.Controllers
 {
+    [Authorize(Roles = "Admins")]
     public class CountryController : Controller
     {
         PeopleDBModelContext db = new PeopleDBModelContext();
         
         public ActionResult Index()
         {
-            return View(db.Countries.ToList());
+            return View(db.Countries.Include("cities").ToList());
         }
 
         
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
-            var Country = db.Countries.Find(id);
+            var Country = db.Countries.Include("cities").SingleOrDefault(s => s.CountryId == id);
             if (Country == null)
             {
                 return HttpNotFound();
@@ -56,10 +57,10 @@ namespace ASP.NETIdentity.Controllers
         }
 
         
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
 
-            var Country = db.Countries.Find(id);
+            var Country = db.Countries.Include("cities").SingleOrDefault(s => s.CountryId == id);
             if (Country == null)
             {
                 return HttpNotFound();
@@ -90,9 +91,9 @@ namespace ASP.NETIdentity.Controllers
         }
 
         // GET: Role/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
-            var Country = db.Countries.Find(id);
+            var Country = db.Countries.Include("cities").SingleOrDefault(s => s.CountryId == id);
             if (Country == null)
             {
                 return HttpNotFound();
@@ -103,16 +104,26 @@ namespace ASP.NETIdentity.Controllers
 
         
         [HttpPost]
-        public ActionResult Delete(Country country)
+        public ActionResult Delete(int id,Country country)
         {
             try
             {
                 // TODO: Add delete logic here
-                Country Country = db.Countries.Find(country.CountryId);
-                db.Countries.Remove(Country);
-                db.SaveChanges();
+                var Country = db.Countries.Include("cities").SingleOrDefault(s => s.CountryId == id);
+               // var City = db..Where(p => p.City.CityId == City.CityId).ToList();
+                if (Country.cities.Count()>0)
+                {
+                    ViewBag.msg = "Error: Can't remove Country if city still there in it";
+                    return View(Country);
+                }
+                else
+                {
+                    db.Countries.Remove(Country);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-                return RedirectToAction("Index");
+                
             }
             catch
             {
